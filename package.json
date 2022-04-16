@@ -2,6 +2,11 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "keywords": [
+    "git",
+    "hooks",
+    "pre-commit"
+  ],
   "dependencies": {
     "@craco/craco": "^6.4.3",
     "@testing-library/jest-dom": "^5.14.1",
@@ -12,9 +17,12 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
-    "craco": "5.0.1",
+    "compression-webpack-plugin": "^9.2.0",
+    "craco": "0.0.3",
+    "env-cmd": "^10.1.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
+    "html-webpack-plugin": "^5.5.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.8",
     "postcss-import": "^14.1.0",
@@ -24,17 +32,24 @@
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.4"
   },
+  "homepage": "./",
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start": "env-cmd -f .env.dev craco start REACT_APP_MOCK=true",
+    "start:pre": "env-cmd -f .env.pre craco start REACT_APP_MOCK=true",
+    "start:pro": "env-cmd -f .env.pro craco start REACT_APP_MOCK=true",
+    "build": "env-cmd -f .env.dev craco build",
+    "build:pre": "env-cmd -f .env.pre craco build",
+    "build:pro": "env-cmd -f .env.pro craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.ts{,x}",
-    "lint": "tsc --noEmit && eslint src/**/*.ts{,x}"
+    "lint": "tsc --noEmit && eslint src/**/*.ts{,x} --fix",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "eslint --ext .tsx --ext .ts ./src --fix"
+      "lint --fix",
+       "git add"
     ],
     "./src/**": [
       "prettier --write ."
@@ -60,6 +75,7 @@
   "devDependencies": {
     "autoprefixer": "^9.8.8",
     "postcss": "^7.0.39",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
+    "husky": "^7.0.0"
   }
 }
