@@ -1,17 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  const [fuck, setFuck] = useState(0);
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="box-border bg-purple-400 App">
+      <header className="font-bold text-gray-800 App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <p className="border border-yellow-900 rounded-3xl p-11">
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <a
-          className="App-link"
+          className="text-green-700 transition duration-150 ease-in-out animate-bounce mt-11 hover:scale-150"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
