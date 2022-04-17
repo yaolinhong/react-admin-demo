@@ -4,9 +4,10 @@ module.exports = {
     'airbnb/hooks',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/recommended',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    "plugin:@typescript-eslint/eslint-recommended",
   ],
-  plugins: ['@typescript-eslint','react','import','prettier'],
+  plugins: ['@typescript-eslint', 'react', 'import', 'prettier'],
   env: {
     browser: true,
     es6: true,
@@ -30,7 +31,7 @@ module.exports = {
     'arrow-body-style': 'off',
     'prefer-arrow-callback': 'off',
     'linebreak-style': 'off',
-    'import/extensions': [ 
+    'import/extensions': [
       'error',
       'ignorePackages',
       {

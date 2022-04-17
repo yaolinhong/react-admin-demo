@@ -1,12 +1,11 @@
 // TODO 增加权限控制
 // TODO 增加全局状态管理
 
-import React, { useState } from "react";
+import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  const [fuck, setFuck] = useState(0);
   return (
     <div className="box-border bg-purple-400 App">
       <header className="font-bold text-gray-800 App-header">
